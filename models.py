@@ -2,6 +2,8 @@ from datetime import datetime
 from database import Base
 from sqlalchemy import Column, Integer, String, Boolean, Date, Time
 
+# Date expects this format "1999-11-07"
+
 
 class Aircraft(Base):
     __tablename__ = 'Aircrafts'
@@ -16,7 +18,8 @@ class Flight(Base):
     origin = Column('origin', String)
     arrival_terminal = Column('arrival terminal', String)
     origin_terminal = Column('origin terminal', String)
-    gate = Column('gate', String)
+    arrival_gate = Column('arival gate', String)
+    departure_gate = Column('departure gate', String)
     route = Column('route', String)
     destination = Column('destination', String)
     arrival_date = Column('arrival date', Date)
@@ -25,7 +28,7 @@ class Flight(Base):
     departure_date = Column('departure date', Date)
 
 
-class Pilots(Base):
+class Pilot(Base):
     __tablename__ = 'Pilots'
     id = Column('id', Integer, primary_key=True, index=True)
     first_name = Column('first name', String)
