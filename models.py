@@ -17,7 +17,6 @@ class Aircraft(Base):
 
     id = Column('id', Integer, primary_key=True, index=True)
     type = Column('type', String)
-
     # One-to-Many relationship with Flight
     flights = relationship("Flight", back_populates="aircraft")
 
@@ -27,7 +26,6 @@ class Flight(Base):
 
     id = Column('id', Integer, primary_key=True, index=True)
     aircraft_id = Column(Integer, ForeignKey('Aircrafts.id'))
-
     origin = Column('origin', String)
     arrival_terminal = Column('arrival terminal', String)
     origin_terminal = Column('origin terminal', String)
@@ -55,7 +53,6 @@ class Pilot(Base):
     first_name = Column('first name', String)
     last_name = Column('last name', String)
     date_of_birth = Column('date of birth', Date)
-
     # Many-to-Many relationship with Flight
     flights = relationship(
         "Flight", secondary=flight_pilot_association, back_populates="pilots")
