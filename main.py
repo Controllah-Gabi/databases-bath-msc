@@ -8,6 +8,7 @@ from sqlalchemy.orm import Session, sessionmaker
 from pydantic import BaseModel
 from datetime import date, time
 from sqlalchemy import func
+from starlette.responses import RedirectResponse
 
 app = FastAPI()
 
@@ -53,6 +54,11 @@ class PilotRequest(BaseModel):
     first_name: str
     last_name: str
     date_of_birth: date
+
+
+@app.get("/", include_in_schema=False)
+def root():
+    return RedirectResponse(url="/docs")
 
 
 @app.get("/aircrafts", status_code=status.HTTP_200_OK)
