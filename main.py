@@ -8,7 +8,6 @@ from sqlalchemy.orm import Session, sessionmaker
 from pydantic import BaseModel
 from datetime import date, time
 from sqlalchemy import func
-import uvicorn
 
 app = FastAPI()
 
@@ -422,5 +421,3 @@ async def delete_pilot(db: db_dependency, pilot_id: int = Path(gt=0)):
 
     # Commit the transaction to make sure the deletion is saved in the database
     db.commit()
-
-uvicorn.run(app, host="0.0.0.0", port="8080")
